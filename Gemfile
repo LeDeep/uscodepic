@@ -9,6 +9,7 @@ gem 'pg'
 
 group :test do
   gem 'capybara'
+  gem "factory_girl_rails"
 end
 
 group :test, :development do
