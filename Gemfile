@@ -9,6 +9,8 @@ gem 'pg'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'rb-fsevent'
+  gem 'guard-rspec'
 end
 
 
