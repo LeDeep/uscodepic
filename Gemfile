@@ -7,6 +7,10 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 
+group :test do
+  gem 'capybara'
+end
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'rb-fsevent'
