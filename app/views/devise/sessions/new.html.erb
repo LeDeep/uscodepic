@@ -1,4 +1,6 @@
-<h2>Sign in</h2>
+<% provide :title, "Sign in" %>
+
+<h2><%= yield :title %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= f.label :email %>
