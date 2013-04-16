@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'thin'
 gem 'devise'
+gem 'cancan'
 
 group :test do
   gem 'capybara'
