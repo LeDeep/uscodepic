@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 gem 'thin'
+gem 'devise'
 
 group :test do
   gem 'capybara'
