@@ -1,12 +1,18 @@
 Uscodepic::Application.routes.draw do
+
   devise_for :users
 
   resources :tools
   resources :subjects, :only => [:index]
   resources :types, :only => [:index]
+  resources :help_requests, :except => [:edit, :update, :destroy]
 
-  match 'dashboard/main' => 'dashboard#main', :via => :get
-  root :to => 'dashboard#main'
+  root :to => 'dashboard#index'
+
+  match 'dashboard' => 'dashboard#index', :via => :get
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -61,7 +67,5 @@ Uscodepic::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+ 
 end
