@@ -14,8 +14,6 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'guard-rspec'
-  gem 'rb-fsevent'
 end
 
 group :test, :development do
@@ -26,6 +24,8 @@ group :development do
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
 end
 
 # Gems used only for assets and not required
