@@ -36,4 +36,30 @@ feature 'help requests:' do
     visit new_help_request_path
     page.should have_content 'Please sign in or create an account'
   end
+
+  scenario 'as a user i want to be able to respond to a help request' do
+    help_request = FactoryGirl.create :help_request
+    create_user_and_sign_in
+    visit help_request_path(help_request)
+    click_link 'Respond'
+    fill_in 'Message', :with => 'help is on the way!'
+    click_button 'Submit'
+    page.should have_content 'response was posted'
+  end
+
+  scenario 'as a visitor i should not be able to respond' do
+    help_request = FactoryGirl.create :help_request
+    visit help_request_path(help_request)
+    page.should_not have_content 'Respond'
+  end
+
+  scenario 'as a user, i want to see an error if i submit an invalid response' do
+    help_request = FactoryGirl.create :help_request
+    create_user_and_sign_in
+    visit help_request_path(help_request)
+    click_link 'Respond'
+    fill_in 'Message', :with => ''
+    click_button 'Submit'
+    page.should have_content 'problems'
+  end
 end

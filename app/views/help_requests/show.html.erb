@@ -1,3 +1,8 @@
 <% provide :title, @help_request.subject %>
 
 <p><%= simple_format @help_request.details %></p>
+
+<% if can? :create, Response %>
+  <p><%= link_to 'Respond', new_help_request_response_path(@help_request) %></p>
+<% end %>
+
