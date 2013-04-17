@@ -1,0 +1,4 @@
+<% if user_signed_in? %>
+  <h3><%= current_user.email %></h3>
+  <%= link_to 'Open a help request', new_help_request_path %>
+<% end %>
