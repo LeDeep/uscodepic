@@ -5,5 +5,7 @@ Uscodepic::Application.routes.draw do
 
   devise_for :users
 
-  resources :help_requests, :except => [:edit, :update, :destroy]
+  resources :help_requests, :except => [:edit, :update, :destroy] do
+    resources :responses, :only => [:new, :create]
+  end
 end

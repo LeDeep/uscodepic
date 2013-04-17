@@ -6,8 +6,11 @@ class Ability
     unless user.new_record?
       can :read, HelpRequest
       can :create, HelpRequest, :user => user
+      can :read, Response
+      can :create, Response, :user => user
     else
       can :read, HelpRequest
+      can :read, Response
     end
   end
 end

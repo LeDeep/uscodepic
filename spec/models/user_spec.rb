@@ -11,5 +11,6 @@ describe User do
   
   context 'associations' do
     it {should have_many :help_requests}
+    it {should have_many :responses}
   end
 end
