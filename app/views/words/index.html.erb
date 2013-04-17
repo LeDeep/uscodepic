@@ -1,0 +1,18 @@
+<% provide :title, "Terms" %>
+
+<%= button_to "Add a word", new_word_path, :method => "get", :class => 'btn btn-success pull-right' %>    
+
+<table class="table">
+  <tr>
+    <td><b>Terms</b></td>
+    <td><b>Definitions</b></td>
+  </tr>
+  <% @words.each do |word| %>
+    <tr>
+      <td><%= word.term %></td>
+      <td><%= word.current_definition %></td>
+      <td><%= link_to "Add a definition", new_definition_path(:word_id => word.id), :class => 'btn btn-success pull-right' %></td>      
+    </tr>
+  <% end %>
+
+</table>

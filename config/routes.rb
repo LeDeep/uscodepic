@@ -1,6 +1,10 @@
 Uscodepic::Application.routes.draw do
   devise_for :users
 
+  resources :words
+  resources :definitions
+
+
   match 'dashboard/main' => 'dashboard#main', :via => :get
   root :to => 'dashboard#main'
 

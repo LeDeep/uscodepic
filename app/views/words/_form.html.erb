@@ -1,0 +1,9 @@
+<%= render :partial => 'layouts/errors', :locals => {:object => word} %>
+  
+<%= form_for word do |f| %>
+
+  <%= f.label "Enter word:" %>
+  <%= f.text_field :term %>
+
+  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+<% end %>

@@ -8,7 +8,8 @@ class Ability
     elsif user.role == 'current'
       can :manage, :all
     else
-      can :read, :all, :public => true
+      can :manage, :all
+      # can :read, :all, :public => true
     end
 
   # Define abilities for the passed in user here. For example:
