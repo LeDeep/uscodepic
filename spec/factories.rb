@@ -13,6 +13,7 @@ FactoryGirl.define do
   factory :definition do 
     sequence(:text) {|n| "Testing#{n}"}
     word
+  end
 
   factory :help_request do
     subject 'stuck'
