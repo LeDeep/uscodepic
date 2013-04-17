@@ -1,9 +1,0 @@
-<%= render :partial => 'layouts/errors', :locals => {:object => help_request} %>
-
-<%= form_for help_request do |f| %>
-  <%= f.label :subject %>
-  <%= f.text_field :subject %>
-  <%= f.label :details %>
-  <%= f.text_area :details %>
-  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-<% end %>
