@@ -8,4 +8,9 @@ describe User do
     it {should allow_mass_assignment_of(:remember_me)}
     it {should allow_mass_assignment_of(:role)}
   end
+  
+  context 'associations' do
+    it {should have_many :help_requests}
+    it {should have_many :responses}
+  end
 end
