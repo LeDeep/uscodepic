@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Uscodepic</title>
+  <title><%= yield :title %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="nav-collapse">
+          <div class="row">
+            <div class="span4">
+              <form class="navbar-search">
+                <input type="text" class="search-query" placeholder="Search">
+              </form>
+            </div>
+            <div class="span4">
+            </div>
+            <div class="span4">
+              <ul class="nav pull-right">
+                <% if user_signed_in? %>
+                  <li><%= link_to 'My account', edit_user_registration_path %></li>
+                  <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+                <% else %>
+                  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                  <li><%= link_to 'Sign in', new_user_session_path %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
-    <div class="navbar navbar-fixed-top">
-      <form class="navbar-search pull-left">
-        <input type="text" class="search-query" placeholder="Search">
-      </form>
-    </div>
-    
+
     <%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
 
-    <%= yield %>
+    <div class="content">
+      
+      <h2><%= yield :title %></h2>
+
+      <%= yield %>
+
+    </div>
 
   </div>
 

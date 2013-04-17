@@ -1,7 +1,5 @@
 <% provide :title, "Edit account" %>
 
-<h2><%= yield :title %></h2>
-
 <%= render :partial => 'layouts/errors', :locals => {:object => resource} %>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>

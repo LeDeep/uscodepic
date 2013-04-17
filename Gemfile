@@ -14,12 +14,12 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
 end
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'rb-fsevent'
-  gem 'guard-rspec'
 end
 
 group :development do
