@@ -1,0 +1,10 @@
+<%= render :partial => 'layouts/errors', :locals => {:object => definition} %>
+  
+<%= form_for definition do |f| %>
+
+  <%= f.label "Enter definition:" %>
+  <%= f.text_field :text %>
+  <%= f.hidden_field :word_id, :value => params["word_id"] %>
+  
+  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+<% end %>
