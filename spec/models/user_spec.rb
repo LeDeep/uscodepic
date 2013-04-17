@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'cancan/matchers'
 
 describe User do
   context 'mass assignment' do
@@ -12,5 +13,30 @@ describe User do
   context 'associations' do
     it {should have_many :help_requests}
     it {should have_many :responses}
+  end
+
+  context 'abilities' do
+    subject {Ability.new(user)}
+
+    context 'when signed in' do
+      let(:user) {FactoryGirl.create(:user)}
+      let(:other) {FactoryGirl.create(:user)}
+
+      it {should be_able_to :read, HelpRequest.new}
+      it {should be_able_to :create, user.help_requests.new}
+      it {should_not be_able_to :create, other.help_requests.new}
+
+      it {should be_able_to :read, Response.new}
+      it {should be_able_to :create, user.responses.new}
+    end
+
+    context 'when not signed in' do
+      let(:user) {User.new}
+      
+      it {should be_able_to :read, Response.new}
+      it {should be_able_to :read, HelpRequest.new}
+      it {should_not be_able_to :create, HelpRequest.new}
+      it {should_not be_able_to :create, Response.new}
+    end
   end
 end
