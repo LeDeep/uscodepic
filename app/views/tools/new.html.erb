@@ -1,0 +1,53 @@
+<% provide :title, "Add a new tool!" %>
+
+<% if @tool.errors.any? %>
+  <div class="error_messages">
+    <h2>You missed something.  Try again.</h2>
+    <ul>
+      <% @tool.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for @tool do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => true %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+
+  <div class="btn-group">
+      <label class="btn">Subject</label>
+      <button class="btn dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+          <ul class="dropdown-menu">
+          <%= f.collection_select(:subject_id, @subjects, :id, :name) if @subjects %>
+           </ul>
+      </button>
+  </div>
+
+  <div class="btn-group">
+      <label class="btn">Type</label>
+      <button class="btn dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+          <ul class="dropdown-menu">
+          <%= f.collection_select(:type_id, @types, :id, :name) if @types %>
+           </ul>
+      </button>
+  </div>
+  
+
+  
+
+  <%= f.label :level %>
+  <%= f.text_field :level %>
+
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+
+
+  <%= f.submit "Add", :class => 'btn btn-primary' %>
+<% end %>

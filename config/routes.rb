@@ -1,6 +1,10 @@
 Uscodepic::Application.routes.draw do
   devise_for :users
 
+  resources :tools
+  resources :subjects, :only => [:index]
+  resources :types, :only => [:index]
+
   match 'dashboard/main' => 'dashboard#main', :via => :get
   root :to => 'dashboard#main'
 
@@ -16,10 +20,10 @@ Uscodepic::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  #   tools :products
 
   # Sample resource route with options:
-  #   resources :products do
+  #   tools :products do
   #     member do
   #       get 'short'
   #       post 'toggle'
@@ -30,16 +34,16 @@ Uscodepic::Application.routes.draw do
   #     end
   #   end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
+  # Sample resource route with sub-tools:
+  #   tools :products do
+  #     tools :comments, :sales
   #     resource :seller
   #   end
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  # Sample resource route with more complex sub-tools
+  #   tools :products do
+  #     tools :comments
+  #     tools :sales do
   #       get 'recent', :on => :collection
   #     end
   #   end
@@ -48,7 +52,7 @@ Uscodepic::Application.routes.draw do
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
+  #     tools :products
   #   end
 
   # You can have the root of your site routed with "root"

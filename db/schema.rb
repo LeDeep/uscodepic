@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416024847) do
+ActiveRecord::Schema.define(:version => 20130417190010) do
+
+  create_table "subjects", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "tools", :force => true do |t|
+    t.string  "name"
+    t.integer "type_id"
+    t.integer "subject_id"
+    t.string  "cost"
+    t.string  "level"
+    t.string  "location"
+  end
+
+  create_table "types", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
