@@ -1,5 +1,3 @@
-<% provide :title, "Add a new tool!" %>
-
-<%= render :partial => 'layouts/errors', :locals => {:object => @tool} %>
+<% provide :title, "#{@tool.name}" %>
 
 <%= render :partial => 'form', :locals => {:tool => @tool} %>

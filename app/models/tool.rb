@@ -6,5 +6,7 @@ class Tool < ActiveRecord::Base
 
   belongs_to :type
   belongs_to :subject
+
+  LEVEL = ['Beginner', 'Intermediate', 'Advanced']
   
 end

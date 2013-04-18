@@ -1,25 +1,29 @@
 
 
 <table class='table'>
-  <thead>
+  <thead class='tool'>
     <tr>
-      <th>Subject</th>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Type</th>
-      <th>Cost</th>
-      <th>Edit</th>
+      <th><%= sortable "subject_id", "Subject" %></th>
+      <th><%= sortable "name", "Name" %></th>
+      <th><%= sortable "location", "Location" %></th>
+      <th><%= sortable "type_id", "Type" %></th>
+      <th><%= sortable "Level" %></th>
+      <th><%= sortable "cost", "Cost" %></th>
+      <th></th>
     </tr>
   </thead>
   <% @tools.each do |tool| %>
     <tr>
       <td><%= tool.subject.name %></td>
       <td><%= tool.name %></td>
-      <td><%= tool.location %></td>
+      <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
       <td><%= tool.type.name %></td>
+      <td><%= tool.level %></td>   
       <td><%= tool.cost %></td>
 
-      <td><%= link_to 'Edit', "/tools/#{tool.id}/edit", :class => 'btn btn-mini' %></td>
+
+
+      <td><%= link_to 'Edit', edit_tool_path(tool.id), :class => 'btn btn-mini' %></td>
     </tr>
   <% end %>
 </table>
