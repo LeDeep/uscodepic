@@ -1,16 +1,18 @@
-<% provide :title, "Definition and history for #{@word.term}" %>
+<% provide :title, "Definitions and history for '#{@word.term}'" %>
 
 <table class="table">
-  <tr>
-    <td><b>Definitions</b></td>
-    <td><b>Author</b></td>
-    <td><b>Date</b></td>
-  </tr>
+  <thead>
+    <tr>
+      <th class="span8">Definition</th>
+      <th class="span2">Author</th>
+      <th class="span2">Date</th>
+    </tr>
+  </thead>
   <% @word.definitions.each do |definition| %>
     <tr>
-      <td><%= definition.text %></td>
-      <td><%= definition.user %></dt>
-      <td><%= definition.created_at %></td>      
+      <td class="span8"><%= definition.text %></td>
+      <td class="span2"><%= definition.user.email %></td>
+      <td class="span2"><%= definition.created_at.localtime.strftime("%x") %></td>      
     </tr>
   <% end %>
 

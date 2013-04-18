@@ -3,10 +3,12 @@
 <%= button_to "Add a word", new_word_path, :method => "get", :class => 'btn btn-success pull-right' %>    
 
 <table class="table">
-  <tr>
-    <td><b>Terms</b></td>
-    <td><b>Definitions</b></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Terms</th>
+      <th>Definitions</th>
+    </tr>
+  </thead>
   <% @words.each do |word| %>
     <tr>
       <% if word.definitions.count > 1 %>
@@ -15,7 +17,7 @@
         <td><%= word.term %></td>
       <% end %>
       <td><%= word.current_definition %></td>   
-      <td><%= link_to "Add a definition", new_definition_path(:word_id => word.id), :class => 'btn btn-success' %></td>
+      <td><%= link_to "Add a definition", new_definition_path(word), :class => 'btn btn-success' %></td>
     </tr>
   <% end %>
 

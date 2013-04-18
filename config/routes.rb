@@ -2,8 +2,10 @@ Uscodepic::Application.routes.draw do
 
   devise_for :users
 
-  resources :words
-  resources :definitions
+  resources :words do
+    resources :definitions
+  end
+  
   resources :help_requests, :except => [:edit, :update, :destroy] do
     resources :responses, :only => [:new, :create]
   end

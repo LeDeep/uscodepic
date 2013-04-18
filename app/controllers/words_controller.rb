@@ -10,7 +10,7 @@ class WordsController < ApplicationController
     @word = Word.new(params[:word])
     if @word.save
       flash.now[:notice] = "The word was successfully created."
-      redirect_to new_definition_path(:word_id => @word.id)
+      redirect_to new_word_definition_path(@word)
     else
       flash.now[:alert] = "There were errors creating the word."
       render :new

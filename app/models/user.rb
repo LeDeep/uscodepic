@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   
   has_many :help_requests
   has_many :responses
+  has_many :definitions
 end

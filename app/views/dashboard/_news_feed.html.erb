@@ -1,0 +1,12 @@
+<ul class="span7 pull-right">
+  <% happenings.each do |happening| %>
+    <li>
+      <strong><%= happening.user.email %></strong>
+      <% if happening.class == HelpRequest %>
+       requested help with '<%= link_to happening.subject, happening %>'
+      <% elsif happening.class == Definition %>
+        added a defintion for '<%= link_to happening.word.term, happening.word %>' in the Hacktionary
+      <% end %>
+      at <%= happening.created_at.localtime.strftime("%I:%M %p") %> on <%= happening.created_at.localtime.strftime("%x") %>.
+    </li>
+  <% end %>
