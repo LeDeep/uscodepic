@@ -1,0 +1,5 @@
+<% provide :title, "#{@tool.name}" %>
+
+<%= render :partial => 'layouts/errors', :locals => {:object => @tool} %>
+
+<%= render :partial => 'form', :locals => {:tool => @tool} %>

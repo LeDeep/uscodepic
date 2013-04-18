@@ -1,0 +1,27 @@
+
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Type</th>
+      <th>Cost</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <% @tools.each do |tool| %>
+    <tr>
+      <td><%= tool.subject.name %></td>
+      <td><%= tool.name %></td>
+      <td><%= tool.location %></td>
+      <td><%= tool.type.name %></td>
+      <td><%= tool.cost %></td>
+
+      <td><%= link_to 'Edit', "/tools/#{tool.id}/edit", :class => 'btn btn-mini' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'Add a Tool', new_tool_path, :class => 'btn btn-primary' %></p>

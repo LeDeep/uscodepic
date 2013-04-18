@@ -4,8 +4,7 @@ describe Tool do
   context 'validations' do
     it {should validate_presence_of :name} 
     it {should validate_presence_of :location} 
-    it {should validate_presence_of :type_id} 
-    it {should validate_presence_of :subject_id} 
+
   end 
 
   context 'accessibility' do

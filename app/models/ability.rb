@@ -4,10 +4,11 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     unless user.new_record?
-      can :read, HelpRequest
-      can :create, HelpRequest, :user => user
+      # can :read, HelpRequest
+      can :manage, :all
+      # can :create, HelpRequest, :user => user
     else
-      can :read, HelpRequest
+      # can :read, HelpRequest
     end
   end
 end

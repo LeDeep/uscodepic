@@ -1,0 +1,20 @@
+<% provide :title, 'Subjects' %>
+
+
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <% @subjects.each do |subject| %>
+    <tr>
+      <td><%= subject.name %></td>
+      <td><%= link_to 'Delete', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'Add a Subject', new_subject_path, :class => 'btn btn-primary' %></p>

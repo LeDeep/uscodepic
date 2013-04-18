@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20130417190010) do
 
+  create_table "help_requests", :force => true do |t|
+    t.string   "subject"
+    t.text     "details"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "subjects", :force => true do |t|
     t.string "name"
   end
@@ -28,15 +36,6 @@ ActiveRecord::Schema.define(:version => 20130417190010) do
 
   create_table "types", :force => true do |t|
     t.string "name"
-  end
-
-
-  create_table "help_requests", :force => true do |t|
-    t.string   "subject"
-    t.text     "details"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

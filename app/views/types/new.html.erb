@@ -1,0 +1,10 @@
+<% provide :title, "Add a new type!" %>
+
+<%= render :partial => 'layouts/errors', :locals => {:object => @type} %>
+
+<%= form_for @type do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => true %>
+
+  <%= f.submit "Add", :class => 'btn btn-primary' %>
+<% end %>

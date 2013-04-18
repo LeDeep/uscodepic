@@ -1,6 +1,6 @@
 class Tool < ActiveRecord::Base
 
-  validates :name, :type_id, :subject_id, :location, :presence => true
+  validates :name, :location, :presence => true
 
   attr_accessible :name, :type_id, :subject_id, :location, :level, :cost
 

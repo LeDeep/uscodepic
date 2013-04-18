@@ -3,8 +3,8 @@ Uscodepic::Application.routes.draw do
   devise_for :users
 
   resources :tools
-  resources :subjects, :only => [:index]
-  resources :types, :only => [:index]
+  resources :subjects
+  resources :types
   resources :help_requests, :except => [:edit, :update, :destroy]
 
   root :to => 'dashboard#index'
