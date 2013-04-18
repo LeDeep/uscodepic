@@ -14,7 +14,7 @@
   </thead>
   <% @tools.each do |tool| %>
     <tr>
-      <td><%= tool.subject.name %></td>
+      <td><%= link_to "#{tool.subject.name}", subject_path(tool.subject.id) %></td>
       <td><%= tool.name %></td>
       <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
       <td><%= tool.type.name %></td>

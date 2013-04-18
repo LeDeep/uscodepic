@@ -15,6 +15,12 @@ class TypesController < ApplicationController
     end
   end
 
+  def show
+    @type = Type.find(params[:id])
+    @tools = Tool.all
+    
+  end
+
   def update
     @type = Type.find(params[:id])
     if @type.update_attributes(params[:type])

@@ -29,6 +29,11 @@ class SubjectsController < ApplicationController
     end
   end
 
+  def show
+    @subject = Subject.find(params[:id])
+    @tools = Tool.all
+  end
+
   def destroy
     @subject = Subject.find(params[:id])
     @subject.destroy
