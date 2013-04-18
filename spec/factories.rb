@@ -21,6 +21,12 @@ FactoryGirl.define do
     user
   end
 
+  factory :response do
+    message 'help is on the way'
+    help_request
+    user
+  end
+
   factory :user do
     sequence(:email) {|n| "email#{n}@bye.com"}
     password 'unbreakable'

@@ -30,6 +30,14 @@ feature 'help requests:' do
     visit help_requests_path
     click_link help_request.subject
     page.should have_content help_request.details
+    page.should have_content help_request.user.email
+    page.should have_content help_request.created_at.localtime.strftime("on %x at %I:%M %p")
+  end
+
+  scenario 'as a visitor/user, i wanna see responses for a help request' do
+    response = FactoryGirl.create :response
+    visit help_request_path(response.help_request)
+    page.should have_content response.message
   end
 
   scenario 'as a visitor, i should not be able to create a help request' do

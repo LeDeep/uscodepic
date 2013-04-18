@@ -1,8 +1,25 @@
 <% provide :title, @help_request.subject %>
-
-<p><%= simple_format @help_request.details %></p>
+  
+<%= simple_format @help_request.details %>
+<p>Requested by <strong><%= @help_request.user.email %></strong> <%= @help_request.created_at.localtime.strftime("on %x at %I:%M %p") %></p>
 
 <% if can? :create, Response %>
-  <p><%= link_to 'Respond', new_help_request_response_path(@help_request) %></p>
+  <%= link_to 'Respond', new_help_request_response_path(@help_request), :class => 'btn btn-primary' %>
 <% end %>
 
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Response</th>
+      <th>User</th>
+      <th>Submitted</th>
+    </tr>
+  </thead>
+  <% @help_request.responses.order('created_at DESC').each do |response| %>
+    <tr>
+      <td><%= response.message %></td>
+      <td><%= response.user.email %></td>
+      <td><%= response.created_at.localtime.strftime("%x at %I:%M %p") %></td>      
+    </tr>
+  <% end %>
+</table>
