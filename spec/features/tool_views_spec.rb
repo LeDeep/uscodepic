@@ -10,7 +10,7 @@ feature 'tool' do
     select('Rails', :from => 'tool_subject_id')
     select('Tutorial', :from => 'tool_type_id')
     select('Beginner', :from => 'tool_level')
-    fill_in 'Cost', :with => 'Free'
+    select('Free', :from => 'tool_cost')
     click_on 'Save'
     page.should have_content "Tool Added!"
   end
@@ -24,10 +24,11 @@ feature 'tool' do
     select('Rails', :from => 'tool_subject_id')
     select('Tutorial', :from => 'tool_type_id')
     select('Beginner', :from => 'tool_level')
-    fill_in 'Cost', :with => 'Free'
+    select('Free', :from => 'tool_cost')
     click_on 'Save'
     page.should have_content "correct these problems"
   end
+
 
 
 end
