@@ -25,5 +25,3 @@ feature 'list words' do
     page.should have_content "Terms"
   end
 end
-
-
