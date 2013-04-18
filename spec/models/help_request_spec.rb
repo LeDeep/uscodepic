@@ -14,5 +14,6 @@ describe HelpRequest do
 
   context 'associations' do
     it {should belong_to :user}
+    it {should have_many :responses}
   end
 end

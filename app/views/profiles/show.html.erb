@@ -1,0 +1,12 @@
+<% provide :title, 'Your Profile' %>
+
+<ul class="unstyled">
+  <li><strong>First name:</strong> <%= @profile.first_name %></li>
+  <li><strong>Last name:</strong> <%= @profile.last_name %></li>
+  <li><strong>Email:</strong> <%= @profile.email %></li>
+  <li><strong>Bio:</strong> <%= @profile.bio %></li>
+</ul>
+
+<div class='button-group'>
+  <p><%= link_to 'Edit', edit_profile_path, :class => 'btn' %></p>
+</div>

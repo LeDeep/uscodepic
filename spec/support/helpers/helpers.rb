@@ -6,15 +6,6 @@ def create_user_and_sign_in
   click_button 'Sign up'
 end
 
-def create_subject_and_type
-    visit "/subjects/new"
-    fill_in 'Name', :with => 'Rails'
-    click_button "Add"
-    visit new_type_path
-    fill_in 'Name', :with => 'Tutorial'
-    click_button "Add"
-end
-
 def create_word_sample
   visit new_word_path
   fill_in 'word_term', :with => 'sample'
@@ -26,5 +17,3 @@ def create_word_with_definition
   fill_in 'definition_text', :with => 'Test definition'
   click_button 'Submit'
 end
-
-
