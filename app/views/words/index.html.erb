@@ -9,9 +9,13 @@
   </tr>
   <% @words.each do |word| %>
     <tr>
-      <td><%= word.term %></td>
-      <td><%= word.current_definition %></td>
-      <td><%= link_to "Add a definition", new_definition_path(:word_id => word.id), :class => 'btn btn-success pull-right' %></td>      
+      <% if word.definitions.count > 1 %>
+        <td><%= link_to word.term, word_path(:id => word.id) %></td>
+      <% else %>
+        <td><%= word.term %></td>
+      <% end %>
+      <td><%= word.current_definition %></td>   
+      <td><%= link_to "Add a definition", new_definition_path(:word_id => word.id), :class => 'btn btn-success' %></td>
     </tr>
   <% end %>
 

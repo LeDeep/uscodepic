@@ -1,4 +1,6 @@
 class WordsController < ApplicationController
+  
+  load_and_authorize_resource
 
   def new
     @word = Word.new
@@ -18,6 +20,4 @@ class WordsController < ApplicationController
   def index
     @words = Word.all
   end
-
-
 end
