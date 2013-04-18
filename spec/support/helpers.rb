@@ -17,4 +17,3 @@ def create_word_with_definition
   fill_in 'definition_text', :with => 'Test definition'
   click_button 'Submit'
 end
-

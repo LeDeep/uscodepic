@@ -4,7 +4,7 @@ Uscodepic::Application.routes.draw do
 
   resources :words
   resources :definitions
-  resources :help_requests, :except => [:edit, :update, :destroy] do
+  resources :help_requests, :except => [:destroy] do
     resources :responses, :only => [:new, :create]
   end
 
@@ -12,5 +12,6 @@ Uscodepic::Application.routes.draw do
 
   match 'dashboard' => 'dashboard#index', :via => :get
 
-
+  # match 'edit_help_request' => 'help_requests#update', :via => :put
+  match "/help_requests/:id/edit" => "help_requests#update", :via => :put
 end

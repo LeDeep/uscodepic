@@ -5,7 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     unless user.new_record?
       can :read, HelpRequest
-      can :create, HelpRequest, :user => user
+      can [:create, :update], HelpRequest, :user => user
       can :read, Response
       can :create, Response, :user => user
       can [:create, :read], Word

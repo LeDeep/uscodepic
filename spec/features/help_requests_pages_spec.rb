@@ -70,4 +70,15 @@ feature 'help requests:' do
     click_button 'Submit'
     page.should have_content 'problems'
   end
+
+  scenario 'as a user, i want to be able to close a request' do
+    help_request = FactoryGirl.create :help_request
+    visit new_user_session_path
+    fill_in 'Email', :with => help_request.user.email
+    fill_in 'Password', :with => help_request.user.password
+    click_button 'Sign in'
+    visit help_request_path(help_request)
+    click_link 'Close'
+    page.should have_content 'request was closed'
+  end
 end
