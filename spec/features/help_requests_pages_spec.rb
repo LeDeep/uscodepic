@@ -81,4 +81,32 @@ feature 'help requests:' do
     click_link 'Close'
     page.should have_content 'request was closed'
   end
+
+  scenario "as a user, i can't close a request that i didn't open" do
+    help_request = FactoryGirl.create :help_request
+    visit new_user_session_path
+    fill_in 'Email', :with => "me@me.com"
+    fill_in 'Password', :with => "me@me.com"
+    click_button 'Sign in'
+    visit help_request_path(help_request)
+    page.should_not have_content 'Close'  
+  end
+
+  scenario "as a user, i can't add a response to a closed request" do
+    help_request = FactoryGirl.create :help_request
+    visit new_user_session_path
+    fill_in 'Email', :with => help_request.user.email
+    fill_in 'Password', :with => help_request.user.password
+    click_button 'Sign in'
+    visit help_request_path(help_request)
+    click_link 'Close'
+    click_link 'Log out'
+    visit new_user_session_path
+    fill_in 'Email', :with => 'akajdkl@eamil.com'
+    fill_in 'Password', :with => 'akdaadsfadsf'
+    click_button 'Sign in'
+    visit new_help_request_response_path(help_request)
+    page.should have_content 'This post is closed.'      
+  end
+
 end

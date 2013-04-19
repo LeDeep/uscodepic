@@ -3,6 +3,7 @@ class HelpRequestsController < ApplicationController
 
   def create
     if @help_request.save
+      @help_request.update_attributes(:closed => false)
       redirect_to help_requests_path, :notice => 'Help request opened.'
     else
       render :new

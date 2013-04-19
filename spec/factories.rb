@@ -18,6 +18,7 @@ FactoryGirl.define do
   factory :help_request do
     subject 'stuck'
     details 'plz help'
+    closed false
     user
   end
 
