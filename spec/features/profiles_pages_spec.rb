@@ -46,4 +46,33 @@ feature 'Edit Profile' do
     click_on 'Log out'
     page.should have_content 'Signed out successfully.'
   end
+
+  scenario "help requests that a user has created are shown on their profile" do
+    create_user_and_sign_in
+    visit new_help_request_path 
+    fill_in 'Subject', :with => 'integration testing'
+    fill_in 'Details', :with => 'when is it too much?'
+    click_on 'Submit'
+    visit profile_path
+    page.should have_content 'integration testing'
+  end
+
+  scenario "a user's responses to another user's help requests is shown as an activity on their profile" do
+    response = FactoryGirl.create(:response)
+    requester = response.help_request.user
+    responder = response.user 
+    create_user_and_sign_in(responder)
+    visit profile_path
+    page.should have_content "#{responder.name} responded to #{requester.name}'s"
+  end
+
+  scenario "skill additions are shown as an activity on their profile " do
+    skill = FactoryGirl.create(:skill)
+    user = FactoryGirl.create(:user, :skills => [skill])
+    create_user_and_sign_in(user)   
+    visit profile_path
+    page.should have_content "#{user.name} added '#{skill.name}' as a skill to their profile"
+  end
+
+
 end

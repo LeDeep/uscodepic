@@ -2,4 +2,7 @@
   <h3><%= current_user.email %></h3>
   <%= link_to 'Open a help request', new_help_request_path %><br />
   <%= link_to "Urban-Hacktionary", words_path %>
+
+<h3> Everybody's Activities </h3>
+  <%= render :partial => 'layouts/feed', :locals => { :actions => User.all.inject([]) { |actions, user| actions << user.actions }.flatten.sort_by { |action| action.created_at }.reverse } %>
 <% end %>

@@ -23,6 +23,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def actions
+    (self.help_requests.all + self.responses.all + self.user_skills.all).flatten.sort_by { |action| action.created_at }.reverse
+  end
+
+  def self.actions
+    (HelpRequest.all + Response.all + UserSkill.all).flatten.sort_by { |action| action.created_at }.reverse
+  end
+
   private
 
   def make_profile

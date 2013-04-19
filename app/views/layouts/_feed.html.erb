@@ -1,0 +1,18 @@
+<ul class="unstyled">
+  <% actions.each do |action| %>
+    <li>
+      
+      <% case action.class.to_s %>
+      <% when 'HelpRequest' %>
+        <strong><%= action.user.name %></strong> requested help with '<%= action.subject %>'
+      <% when 'Response' %>
+        <strong><%= action.user.name %></strong> responded to <%= action.help_request.user.name %>'s help request re: '<%= action.help_request.subject %>'
+      <% when 'UserSkill' %>
+        <strong><%= action.user.name %></strong> added '<%= action.skill.name %>' as a skill to their profile
+      <% end %>
+      <%= action.created_at.localtime.strftime("on %x at %I:%M %p") %>.
+    </li>
+
+
+ <% end %>
+</ul>

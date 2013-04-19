@@ -52,14 +52,36 @@ describe User do
   end
 
   context '#name' do
-    it 'should return the email if the profile table does not exist' do
+    it 'returns the email if the profile table does not exist' do
       user = FactoryGirl.create(:user)
       user.name.should eq user.email
     end
-    it 'should return the first and last name from the profile table if it exists' do
+    it 'returns the first and last name from the profile table if it exists' do
       user = FactoryGirl.create(:user)
       user.profile.update_attributes(first_name: 'Bob', last_name: 'Smith')
       user.name.should eq 'Bob Smith'
+    end
+  end
+
+  context '#actions' do
+    it 'returns an array of all objects user has created' do
+      help_request = FactoryGirl.create(:help_request)
+      response = FactoryGirl.create(:response)
+      user = FactoryGirl.create(:user, :help_requests => [help_request], :responses => [response])
+      user.skills.create(:name => 'mad skillz')
+      user_skill = user.user_skills.last
+      user.actions.should eq [help_request, response, user_skill].sort_by { |action| action.created_at }.reverse
+    end
+  end
+
+  context '.actions' do
+    it 'returns an array of all objects created by any user' do
+      help_request = FactoryGirl.create(:help_request)
+      response = FactoryGirl.create(:response)
+      skill = FactoryGirl.create(:skill)
+      user = FactoryGirl.create(:user, :skills => [skill])
+      user_skill = user.user_skills.last
+      User.actions.should eq [user_skill, help_request, response, response.help_request].sort_by { |action| action.created_at }.reverse
     end
   end
 end
