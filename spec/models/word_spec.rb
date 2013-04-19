@@ -23,6 +23,13 @@ describe Word do
       FactoryGirl.create(:vote, :definition => definition2)
       word.current_definition.should eq definition2
     end
+
+    it 'returns nil if no definitions have votes' do
+      word = FactoryGirl.create(:word)
+      definition2 = FactoryGirl.create(:definition, :word => word)
+      definition1 = FactoryGirl.create(:definition, :word => word)
+      word.current_definition.should be_nil
+    end
   end
 
   context '#definitions_in_order' do
