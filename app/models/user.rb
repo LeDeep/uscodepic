@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :help_requests
   has_many :responses
+  has_many :definitions
+  has_many :words
   has_many :skills, :through => :user_skills, :inverse_of => :users
   has_many :user_skills
 

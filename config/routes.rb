@@ -2,6 +2,15 @@ Uscodepic::Application.routes.draw do
 
   devise_for :users
 
+  resources :words do
+    resources :definitions
+  end
+
+  resources :definitions do 
+    resources :votes
+  end
+  
+  resources :help_requests, :except => [:edit, :update, :destroy]
   resources :tools
   resources :subjects
   resources :types

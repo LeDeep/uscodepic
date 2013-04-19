@@ -7,14 +7,17 @@ class WordsController < ApplicationController
   end
 
   def create
-    @word = Word.new(params[:word])
+    @word = current_user.words.new(params[:word])
     if @word.save
       flash.now[:notice] = "The word was successfully created."
-      redirect_to new_definition_path(:word_id => @word.id)
+      redirect_to new_word_definition_path(@word)
     else
-      flash.now[:alert] = "There were errors creating the word."
       render :new
     end
+  end
+
+  def show
+    @definitions = Word.find(params[:id]).definitions_in_order
   end
 
   def index

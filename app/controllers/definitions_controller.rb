@@ -1,17 +1,17 @@
 class DefinitionsController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource :word
+  load_and_authorize_resource :definition, :through => :word
 
   def new
-    @definition = Definition.new
+    word = Word.find(params[:word_id])
+    @definition = word.definitions.build
   end
 
   def create
-    word = Word.find(params[:definition][:word_id])
-    if @definition = word.definitions.create(params[:definition].merge({:user_id => current_user.id}))
-      redirect_to words_path, notice: "The definition was successfully created."
+    if @definition.save
+      redirect_to word_path(@definition.word), notice: "Your definition was successfully added to #{@definition.word.term}."
     else
-      flash.now[:alert] = "There were errors creating the definition."
       render :new
     end
   end
@@ -22,5 +22,14 @@ class DefinitionsController < ApplicationController
 
   def show
     @word = Word.find(params[:id])
+  end
+
+  def edit
+    @definition
+  end
+
+  def update
+    @definition.update_attributes(:current => params[:current])
+    redirect_to @word, notice: "Your definition was successfully added to #{@definition.word.term}."
   end
 end

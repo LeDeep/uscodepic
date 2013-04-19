@@ -1,0 +1,7 @@
+<tr>
+  <td class="span8"><%= definition.text %></td>
+  <td><%= button_to 'Vote Up', definition_votes_path(definition, :vote => {:up_down => 1}), :method => :post, :class => 'btn btn-primary' %>
+  <td><%= definition.votes.count %></td>
+  <td class="span2"><%= definition.user.email %></td>
+  <td class="span2"><%= definition.created_at.localtime.strftime("%x") %></td> 
+</tr>
