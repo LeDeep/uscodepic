@@ -50,4 +50,16 @@ describe User do
       it {should_not be_able_to :create, Response.new}
     end
   end
+
+  context '#name' do
+    it 'should return the email if the profile table does not exist' do
+      user = FactoryGirl.create(:user)
+      user.name.should eq user.email
+    end
+    it 'should return the first and last name from the profile table if it exists' do
+      user = FactoryGirl.create(:user)
+      user.profile.update_attributes(first_name: 'Bob', last_name: 'Smith')
+      user.name.should eq 'Bob Smith'
+    end
+  end
 end

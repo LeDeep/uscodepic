@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
 
   after_create :make_profile
 
+  def name
+    if self.profile.first_name && self.profile.last_name
+      self.profile.first_name + ' ' + self.profile.last_name
+    else
+      self.email
+    end
+  end
+
   private
 
   def make_profile
