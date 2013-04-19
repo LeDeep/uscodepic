@@ -3,7 +3,7 @@
 <table class='table'>
   <thead class='tool'>
     <tr>
-      <th><%= sortable "subject_id", "Subject" %></th>
+      <th><%= sortable "subject_id.name", "Subject" %></th>
       <th><%= sortable "name", "Name" %></th>
       <th><%= sortable "location", "Location" %></th>
       <th><%= sortable "type_id", "Type" %></th>
@@ -14,6 +14,7 @@
   </thead>
   <% @tools.each do |tool| %>
     <tr>
+
       <td><%= link_to "#{tool.subject.name}", subject_path(tool.subject.id) %></td>
       <td><%= tool.name %></td>
       <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
