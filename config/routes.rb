@@ -11,6 +11,8 @@ Uscodepic::Application.routes.draw do
   resources :help_requests, :except => [:destroy] do
     resources :responses, :only => [:new, :create]
   end
+  resources :skills, :only => [:new, :create, :index]
+  resources :user_skills, :only => [:create, :destroy]
 
   root :to => 'dashboard#index'
   

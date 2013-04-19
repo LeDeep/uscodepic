@@ -7,6 +7,20 @@
   <li><strong>Bio:</strong> <%= @profile.bio %></li>
 </ul>
 
-<div class='button-group'>
-  <p><%= link_to 'Edit', edit_profile_path, :class => 'btn' %></p>
-</div>
+<p><%= link_to 'Edit profile', edit_profile_path, :class => 'btn' %></p>
+
+
+<% if @profile.user.skills.any? %>
+  <h3>Skills</h3>
+
+  <ul class="unstyled">
+    <% @profile.user.user_skills.each do |user_skill| %>
+      <li>
+        <%= link_to 'x', user_skill, :method => :delete, :confirm => 'Are you sure?', :class => 'delete' %>
+        <%= user_skill.skill.name %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><%= link_to 'Add a skill', skills_path, :class => 'btn' %></p>

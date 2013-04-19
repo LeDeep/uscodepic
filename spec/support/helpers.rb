@@ -1,9 +1,8 @@
-def create_user_and_sign_in
-  visit new_user_registration_path
-  fill_in 'Email', :with => 'tester@testing.com'
-  fill_in 'Password', :with => 'password'
-  fill_in 'Password confirmation', :with => 'password'
-  click_button 'Sign up'
+def create_user_and_sign_in(user=FactoryGirl.create(:user))
+  visit new_user_session_path
+  fill_in 'Email', :with => user.email
+  fill_in 'Password', :with => user.password
+  click_button 'Sign in'
 end
 
 def create_subject_and_type
@@ -21,7 +20,7 @@ def create_word_sample
   click_button 'Submit'
 end
 
-def create_word_with_definition
+def create_word_with_definition #fixme
   create_word_sample
   fill_in 'definition_text', :with => 'Test definition'
   click_button 'Submit'

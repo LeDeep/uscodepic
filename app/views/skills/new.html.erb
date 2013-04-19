@@ -1,0 +1,9 @@
+<% provide :title, "Add a Skill" %>
+
+<%= render :partial => 'layouts/errors', :locals => {:object => @skill} %>
+
+<%= form_for @skill do |f| %>
+  <%= f.label :name, 'Skill' %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+<% end %>

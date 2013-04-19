@@ -12,4 +12,12 @@ feature 'Edit Profile' do
     click_button 'Update Profile'
     page.should have_content 'McEditorson'
   end
+
+  scenario "a logged in user's profile shows all their skills" do
+    skill = FactoryGirl.create(:skill)
+    user = FactoryGirl.create(:user, :skills => [skill])
+    create_user_and_sign_in(user)
+    visit profile_path
+    page.should have_content skill.name
+  end
 end
