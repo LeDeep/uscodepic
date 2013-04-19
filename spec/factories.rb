@@ -6,6 +6,10 @@ FactoryGirl.define do
     bio 'I want to be a programmer'
   end
 
+  factory :skill do
+    name 'really great skill'
+  end
+
   factory :word do 
     sequence(:term) {|n| "sample#{n}"}
   end
@@ -31,5 +35,11 @@ FactoryGirl.define do
     sequence(:email) { |n| "abc#{n}@gmail.com" }
     password "fooAAnnn$$54"
     password_confirmation 'fooAAnnn$$54'
+
+    factory :user_with_skill do
+      after(:create) do |user|
+        FactoryGirl.create(:skill, :users => [user])
+      end
+    end
   end
 end
