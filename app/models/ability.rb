@@ -8,14 +8,22 @@ class Ability
       can [:create, :update], HelpRequest, :user => user
       can :read, Response
       can :create, Response, :user => user
+
       can [:create, :read], Word
       can [:create, :read], Definition
       can :destroy, Definition, :user => user
+
+      can [:read, :create], Tool
+      can [:read, :create], Type
+      can [:read, :create], Subject
     else
       can :read, HelpRequest
       can :read, Response
       can :read, Word
       can :read, Definition
+      can :read, Tool
+      can :read, Type
+      can :read, Subject
     end
   end
 end

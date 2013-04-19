@@ -40,12 +40,39 @@ ActiveRecord::Schema.define(:version => 20130418195310) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "profiles", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "bio"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "responses", :force => true do |t|
     t.text     "message"
     t.integer  "help_request_id"
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "subjects", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "tools", :force => true do |t|
+    t.string  "name"
+    t.integer "type_id"
+    t.integer "subject_id"
+    t.string  "cost"
+    t.string  "level"
+    t.string  "location"
+  end
+
+  create_table "types", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|

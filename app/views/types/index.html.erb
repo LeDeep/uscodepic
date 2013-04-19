@@ -1,0 +1,18 @@
+<% provide :title, 'Types' %>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <% @types.each do |type| %>
+    <tr>
+      <td><%= link_to "#{type.name}", type_path(type.id) %></td>
+      <td><%= link_to 'Delete', type, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'Add a Type', new_type_path, :class => 'btn btn-primary' %></p>

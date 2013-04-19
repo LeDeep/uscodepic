@@ -1,10 +1,10 @@
 FactoryGirl.define do
-
-  # factory :user do
-  #   sequence(:email) {|n| "email#{n}@gmail.com"}
-  #   password "gobbledygook1" 
-  #   password_confirmation "gobbledygook1" 
-  # end
+  factory :profile do
+    first_name 'Bob'
+    last_name 'Smith'
+    email 'bobsmith@yahoo.com'
+    bio 'I want to be a programmer'
+  end
 
   factory :word do 
     sequence(:term) {|n| "sample#{n}"}
@@ -28,8 +28,8 @@ FactoryGirl.define do
   end
 
   factory :user do
-    sequence(:email) {|n| "email#{n}@bye.com"}
-    password 'unbreakable'
-    password_confirmation 'unbreakable'
+    sequence(:email) { |n| "abc#{n}@gmail.com" }
+    password "fooAAnnn$$54"
+    password_confirmation 'fooAAnnn$$54'
   end
 end
