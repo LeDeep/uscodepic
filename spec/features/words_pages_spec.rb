@@ -43,6 +43,14 @@ feature 'show word' do
     page.should have_content '1'
   end
 
+  scenario 'definitions with no votes' do
+    word = FactoryGirl.create(:word)
+    current_definition = FactoryGirl.create(:definition, :word => word)
+    popular_definition = FactoryGirl.create(:definition, :word => word)
+    visit word_path(word)
+    page.should_not have_content "Current Definition"
+  end
+
   scenario 'showing definitions in vote order' do
     word = FactoryGirl.create(:word)
     current_definition = FactoryGirl.create(:definition, :word => word)
@@ -53,5 +61,14 @@ feature 'show word' do
     3.times {FactoryGirl.create(:vote, :definition => current_definition)}
     visit word_path(word)
     popular_definition.text.should appear_before unpopular_definition.text
+  end
+
+  scenario 'adding a word but not a definition' do
+    create_user_and_sign_in
+    visit words_path
+    click_button "Add a word"
+    fill_in "word_term", :with => "Sample"
+    click_button "Submit"
+    page.should have_content "Skip"
   end
 end
