@@ -48,12 +48,6 @@ ActiveRecord::Schema.define(:version => 20130418195310) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "skills", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "subjects", :force => true do |t|
     t.string "name"
   end
@@ -69,13 +63,6 @@ ActiveRecord::Schema.define(:version => 20130418195310) do
 
   create_table "types", :force => true do |t|
     t.string "name"
-  end
-
-  create_table "user_skills", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "skill_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
