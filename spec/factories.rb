@@ -33,4 +33,9 @@ FactoryGirl.define do
     password 'unbreakable'
     password_confirmation 'unbreakable'
   end
+
+  factory :story do
+    title 'Really great article'
+    url 'http://www.canyoubelievethis.com/so/cool/'
+  end
 end

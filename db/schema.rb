@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418195310) do
+ActiveRecord::Schema.define(:version => 20130419212407) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "text"
+    t.integer  "story_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "definitions", :force => true do |t|
     t.text     "text"
@@ -30,22 +38,28 @@ ActiveRecord::Schema.define(:version => 20130418195310) do
     t.boolean  "closed"
   end
 
-  create_table "profiles", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "bio"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "responses", :force => true do |t|
     t.text     "message"
     t.integer  "help_request_id"
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "stories", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "story_comments", :force => true do |t|
+    t.integer  "comment_id"
+    t.integer  "story_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
