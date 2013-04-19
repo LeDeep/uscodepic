@@ -14,6 +14,7 @@ describe Tool do
     it {should allow_mass_assignment_of :subject_id} 
     it {should allow_mass_assignment_of :level} 
     it {should allow_mass_assignment_of :cost} 
+    it {should allow_mass_assignment_of :goal} 
   end
 
   context 'associations' do 

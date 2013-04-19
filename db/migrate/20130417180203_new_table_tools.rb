@@ -1,4 +1,4 @@
-class NewTableResources < ActiveRecord::Migration
+class NewTableTools < ActiveRecord::Migration
   def change
     create_table(:tools) do |t|
       t.string :name
