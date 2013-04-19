@@ -30,6 +30,14 @@ feature 'help requests:' do
     visit help_requests_path
     click_link help_request.subject
     page.should have_content help_request.details
+    page.should have_content help_request.user.email
+    page.should have_content help_request.created_at.localtime.strftime("on %x at %I:%M %p")
+  end
+
+  scenario 'as a visitor/user, i wanna see responses for a help request' do
+    response = FactoryGirl.create :response
+    visit help_request_path(response.help_request)
+    page.should have_content response.message
   end
 
   scenario 'as a visitor, i should not be able to create a help request' do
@@ -61,5 +69,16 @@ feature 'help requests:' do
     fill_in 'Message', :with => ''
     click_button 'Submit'
     page.should have_content 'problems'
+  end
+
+  scenario 'as a user, i want to be able to close a request' do
+    help_request = FactoryGirl.create :help_request
+    visit new_user_session_path
+    fill_in 'Email', :with => help_request.user.email
+    fill_in 'Password', :with => help_request.user.password
+    click_button 'Sign in'
+    visit help_request_path(help_request)
+    click_link 'Close'
+    page.should have_content 'request was closed'
   end
 end

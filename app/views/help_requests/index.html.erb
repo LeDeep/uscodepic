@@ -8,6 +8,7 @@
       <th>Subject</th>
       <th>User</th>
       <th>Date</th>
+      <th>Status</th>
     </tr>
   </thead>
   <% @help_requests.each do |request| %>
@@ -15,6 +16,11 @@
       <td><%= link_to request.subject, request %></td>
       <td><%= request.user.email %></td>
       <td><%= request.created_at.localtime.strftime('%x') %></td>
+      <% if request.closed? %>
+        <td>CLOSED</td>
+      <% else %>
+        <td>OPEN</td>
+      <% end %>
     </tr>
   <% end %>
 </table>

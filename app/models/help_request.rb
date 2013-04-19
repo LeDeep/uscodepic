@@ -1,5 +1,5 @@
 class HelpRequest < ActiveRecord::Base
-  attr_accessible :subject, :details
+  attr_accessible :subject, :details, :closed
 
   belongs_to :user
   has_many :responses

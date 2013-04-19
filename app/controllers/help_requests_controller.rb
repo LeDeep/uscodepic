@@ -1,5 +1,5 @@
 class HelpRequestsController < ApplicationController
-  load_and_authorize_resource :only => [:new, :create, :index, :show]
+  load_and_authorize_resource :only => [:new, :create, :update, :index, :show]
 
   def create
     if @help_request.save
@@ -8,4 +8,10 @@ class HelpRequestsController < ApplicationController
       render :new
     end
   end
+
+  def update
+    help_request = HelpRequest.find(params[:id])
+    help_request.update_attributes(:closed => true)
+    redirect_to :back, :notice => 'This help request was closed.'
+  end  
 end

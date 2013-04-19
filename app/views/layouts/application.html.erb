@@ -14,13 +14,16 @@
       <div class="container">
         <div class="nav-collapse">
           <div class="row">
-            <div class="span4">
+            <div class="span3">
               <form class="navbar-search">
                 <input type="text" class="search-query" placeholder="Search">
 
               </form>
             </div>
-            <div class="span4">
+            <div class="span6">
+              <ul class="nav pull-left">
+                <li><%= link_to 'Help Requests', help_requests_path %></li>
+              </ul>
               <div class="btn-group">
                 <div class="dropdown">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Tools <span class="caret"></span></a>
@@ -33,7 +36,7 @@
                 </div>
               </div>       
             </div>
-            <div class="span4">
+            <div class="span3">
               <ul class="nav pull-right">
                 <% if user_signed_in? %>
                   <li><%= link_to 'My account', edit_user_registration_path %></li>
