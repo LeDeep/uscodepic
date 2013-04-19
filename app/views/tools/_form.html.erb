@@ -22,7 +22,7 @@
   <%= f.collection_select(:level, Tool::LEVEL, :to_s, :to_s, :include_blank => true) %>
 
   <%= f.label :cost %>
-  <%= f.text_field :cost %>
+  <%= f.collection_select(:cost, Tool::COST, :to_s, :to_s, :include_blank => true) %>
 
 
   <%= f.submit "Save", :class => 'btn btn-primary' %>
