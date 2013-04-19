@@ -9,9 +9,12 @@ class Ability
       can :read, Response
       can :create, Response, :user => user
 
-      can [:create, :read], Word
-      can [:create, :read], Definition
+      can :read, Word
+      can :read, Definition
+      can :create, Word
+      can :create, Definition, :user => user
       can :destroy, Definition, :user => user
+      can :update, Definition
 
       can [:read, :create], Tool
       can [:read, :create], Type

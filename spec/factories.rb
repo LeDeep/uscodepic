@@ -12,11 +12,18 @@ FactoryGirl.define do
 
   factory :word do 
     sequence(:term) {|n| "sample#{n}"}
+    user
   end
 
   factory :definition do 
     sequence(:text) {|n| "Testing#{n}"}
+    user
     word
+  end
+
+  factory :vote do
+    up_down 1
+    definition
   end
 
   factory :help_request do
