@@ -5,3 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+subjects = [
+"Agile",
+"APIs",
+"Capybara",
+"CoffeeScript",
+"Databases",
+"Git",
+"Heroku",
+"HTML/CSS",
+"JavaScript",
+"jQuery",
+"Keyboard Shortcuts",
+"RegEx",
+"RSpec",
+"Ruby & Rails",
+"Typing"
+  ]
+
+types = [
+"Book",
+"eBook",
+"Reference",
+"ScreenCast",
+"Tutorial"
+      ]

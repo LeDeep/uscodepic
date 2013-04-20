@@ -3,16 +3,28 @@ require 'cancan/matchers'
 
 describe User do
   context 'mass assignment' do
-    it {should allow_mass_assignment_of(:email)}
-    it {should allow_mass_assignment_of(:password)}
-    it {should allow_mass_assignment_of(:password_confirmation)}
-    it {should allow_mass_assignment_of(:remember_me)}
-    it {should allow_mass_assignment_of(:role)}
+    it {should allow_mass_assignment_of :email}
+    it {should allow_mass_assignment_of :password}
+    it {should allow_mass_assignment_of :password_confirmation}
+    it {should allow_mass_assignment_of :remember_me}
+    it {should allow_mass_assignment_of :role}
+    it {should allow_mass_assignment_of :skills}
   end
   
   context 'associations' do
     it {should have_many :help_requests}
+    it {should have_one :profile}
     it {should have_many :responses}
+    it {should have_many :words}
+    it {should have_many(:skills).through(:user_skills)}
+    it {should have_many :user_skills}
+  end
+
+  context 'callbacks' do
+    it 'creates a profile for the user after the user is created' do
+      user = FactoryGirl.create(:user)
+      user.profile.should_not be_nil
+    end
   end
 
   context 'abilities' do

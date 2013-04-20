@@ -1,18 +1,29 @@
 FactoryGirl.define do
+  factory :profile do
+    first_name 'Bob'
+    last_name 'Smith'
+    email 'bobsmith@yahoo.com'
+    bio 'I want to be a programmer'
+  end
 
-  # factory :user do
-  #   sequence(:email) {|n| "email#{n}@gmail.com"}
-  #   password "gobbledygook1" 
-  #   password_confirmation "gobbledygook1" 
-  # end
+  factory :skill do
+    name 'really great skill'
+  end
 
   factory :word do 
     sequence(:term) {|n| "sample#{n}"}
+    user
   end
 
   factory :definition do 
     sequence(:text) {|n| "Testing#{n}"}
+    user
     word
+  end
+
+  factory :vote do
+    up_down 1
+    definition
   end
 
   factory :help_request do
@@ -29,9 +40,15 @@ FactoryGirl.define do
   end
 
   factory :user do
-    sequence(:email) {|n| "email#{n}@bye.com"}
-    password 'unbreakable'
-    password_confirmation 'unbreakable'
+    sequence(:email) { |n| "abc#{n}@gmail.com" }
+    password "fooAAnnn$$54"
+    password_confirmation 'fooAAnnn$$54'
+
+    factory :user_with_skill do
+      after(:create) do |user|
+        FactoryGirl.create(:skill, :users => [user])
+      end
+    end
   end
 
   factory :story do

@@ -1,0 +1,11 @@
+<% provide :title, 'Skills' %>
+
+<p>Click an existing skill to add it to your profile.</p>
+
+<ul class="unstyled">
+  <% @skills.each do |skill| %>
+    <li><%= link_to skill.name, user_skills_path(:skill_id => skill.id), :method => :post %></li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Create new skill', new_skill_path, :class => 'btn' %></p>

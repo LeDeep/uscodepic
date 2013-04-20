@@ -1,0 +1,30 @@
+<% provide :title, "Subject: #{@subject.name}" %>
+
+<table class='table'>
+  <thead class='tool'>
+    <tr>
+      <th><%=  "Name" %></th>
+      <th><%= "Location" %></th>
+      <th><%= "Type" %></th>
+      <th><%= "Level" %></th>
+      <th><%= "Cost" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <% @tools.each do |tool| %>
+    <% if @subject.id == tool.subject_id %>
+    <tr>
+      <td><%= tool.name %></td>
+      <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
+      <td><%= tool.type.name %></td>
+      <td><%= tool.level %></td>   
+      <td><%= tool.cost %></td>
+   </tr>
+      <% end %>
+ 
+  <% end %>
+
+</table>
+
+<p><%= link_to 'Add a Tool', new_tool_path, :class => 'btn btn-primary' %></p>

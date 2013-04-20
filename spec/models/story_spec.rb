@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Story do 
 
-let(:story) {Story.create({:title => 'OLD tiTle', :url => 'http://reallylame.com'})}
+let(:story) {Story.create({:title => 'OLD tiTle', :url => 'http://reallylame.com', :user_id => 1})}
 
   context 'validations' do 
     it {should validate_presence_of :title}

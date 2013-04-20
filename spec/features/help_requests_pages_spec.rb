@@ -102,10 +102,14 @@ feature 'help requests:' do
     click_link 'Close'
     click_link 'Log out'
     visit new_user_session_path
-    fill_in 'Email', :with => 'akajdkl@eamil.com'
-    fill_in 'Password', :with => 'akdaadsfadsf'
-    click_button 'Sign in'
+    visit new_user_registration_path
+    fill_in 'Email', :with => 'tester@testing.com'
+    fill_in 'Password', :with => 'password'
+    fill_in 'Password confirmation', :with => 'password'
+    click_button 'Sign up'
     visit new_help_request_response_path(help_request)
+    fill_in 'Message', :with => 'yada yada yada'
+    click_button 'Submit'
     page.should have_content 'This post is closed.'      
   end
 

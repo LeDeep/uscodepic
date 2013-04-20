@@ -1,5 +1,5 @@
 class Story < ActiveRecord::Base
-  validates :title, :url, :user_id, :presence => true
+  validates :title, :url, :presence => true
   attr_accessible :title, :url, :user_id
 
   has_many :comments

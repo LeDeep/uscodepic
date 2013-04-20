@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+
+  load_and_authorize_resource
+  
   def new
     @comment = Story.find(params[:story_id]).comments.build
   end

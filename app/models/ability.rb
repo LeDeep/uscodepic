@@ -10,11 +10,18 @@ class Ability
       can :create, Response, :user => user 
       #cannot :create, Response, :help_request => {:closed => true}
       # can :create, Response if :user => user unless :help_request => {:closed => true} end
-      can [:create, :read], Word
-      can [:create, :read], Definition
+
       can [:create, :read, :update], Story, :user => user
       can [:create, :read, :destroy, :update], Comment, :user => user
-      can :destroy, Definition, :user => user
+
+      can [:create], Word, :user => user
+      can [:read], Word
+      can [:read], Definition
+      can [:create, :destroy, :update], Definition, :user => user
+
+      can [:read, :create], Tool
+      can [:read, :create], Type
+      can [:read, :create], Subject
     else
       can :read, HelpRequest
       can :read, Response
@@ -22,6 +29,9 @@ class Ability
       can :read, Definition
       can :read, Story
       can :read, Comment
+      can :read, Tool
+      can :read, Type
+      can :read, Subject
     end
   end
 end
