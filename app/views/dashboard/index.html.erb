@@ -4,7 +4,5 @@
   <%= link_to "Urban-Hacktionary", words_path %>
 
 <h3> Everybody's Activities </h3>
-  <%= render :partial => 'layouts/feed', :locals => { :actions => User.all.inject([]) { |actions, user| actions << user.actions }.flatten.sort_by { |action| action.created_at }.reverse } %>
+  <%= render :partial => 'layouts/feed', :locals => { :actions => User.actions } %>
 <% end %>
-
-<%= render :partial => 'news_feed', :locals => {:happenings => @happenings} %>

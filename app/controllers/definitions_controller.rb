@@ -4,8 +4,8 @@ class DefinitionsController < ApplicationController
   load_and_authorize_resource :definition, :through => :word
 
   def new
-    word = Word.find(params[:word_id])
-    @definition = word.definitions.build
+    @definition = Word.find(params[:word_id]).definitions.build
+    @new_word = params[:new_word]
   end
 
   def create

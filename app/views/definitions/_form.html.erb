@@ -3,7 +3,8 @@
 <%= form_for [definition.word, definition] do |f| %>
 
   <%= f.label "Enter definition:" %>
-  <%= f.text_area :text, :value => @word.current_definition %>
+  <%= f.text_area :text, :value => definition.word.current_definition.try(:text) %>
   
   <%= f.submit 'Submit', :class => 'btn btn-primary' %>
 <% end %>
+<%= link_to "Skip", words_path, :class => 'btn btn-danger' if new_word %>
