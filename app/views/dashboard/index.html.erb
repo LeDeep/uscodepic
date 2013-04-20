@@ -3,3 +3,5 @@
   <%= link_to 'Open a help request', new_help_request_path %><br />
   <%= link_to "Urban-Hacktionary", words_path %>
 <% end %>
+
+<%= render :partial => 'news_feed', :locals => {:happenings => @happenings} %>

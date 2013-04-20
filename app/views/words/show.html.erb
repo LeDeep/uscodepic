@@ -1,17 +1,32 @@
-<% provide :title, "Definition and history for #{@word.term}" %>
+<% provide :title, "Definitions and history for '#{@word.term}'" %>
+
+<% if @word.current_definition %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="span8">Current Definition</th>
+        <th class="span2">Author</th>
+        <th class="span2">Votes</th>
+        <th class="span2">Contributor</th>
+        <th class="span2">Date Added</th>
+      </tr>
+    </thead>
+
+    <%= render :partial => "definition", :locals => {:definition => @word.current_definition} %>
+  </table>
+<% end %>
 
 <table class="table">
-  <tr>
-    <td><b>Definitions</b></td>
-    <td><b>Author</b></td>
-    <td><b>Date</b></td>
-  </tr>
-  <% @word.definitions.each do |definition| %>
+  <thead>
     <tr>
-      <td><%= definition.text %></td>
-      <td><%= definition.user %></td>
-      <td><%= definition.created_at %></td>      
+      <th class="span8">Suggested Definitions</th>
+      <th class="span2">Author</th>
+      <th class="span2">Votes</th>
+      <th class="span2">Contributor</th>
+      <th class="span2">Date Added</th>
     </tr>
+  </thead>
+  <% @definitions.each do |definition| %>
+    <%= render :partial => "definition", :locals => {:definition => definition} unless definition == @word.current_definition %>
   <% end %>
-
 </table>

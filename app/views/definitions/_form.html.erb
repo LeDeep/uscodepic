@@ -1,10 +1,10 @@
 <%= render :partial => 'layouts/errors', :locals => {:object => definition} %>
   
-<%= form_for definition do |f| %>
+<%= form_for [definition.word, definition] do |f| %>
 
   <%= f.label "Enter definition:" %>
-  <%= f.text_field :text %>
-  <%= f.hidden_field :word_id, :value => params["word_id"] %>
+  <%= f.text_area :text, :value => definition.word.current_definition.try(:text) %>
   
   <%= f.submit 'Submit', :class => 'btn btn-primary' %>
 <% end %>
+<%= link_to "Skip", words_path, :class => 'btn btn-danger' if new_word %>

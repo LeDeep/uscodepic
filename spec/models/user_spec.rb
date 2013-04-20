@@ -15,6 +15,7 @@ describe User do
     it {should have_many :help_requests}
     it {should have_one :profile}
     it {should have_many :responses}
+    it {should have_many :words}
     it {should have_many(:skills).through(:user_skills)}
     it {should have_many :user_skills}
     it {should have_many :goals}

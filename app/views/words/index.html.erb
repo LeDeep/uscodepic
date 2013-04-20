@@ -1,12 +1,15 @@
 <% provide :title, "Terms" %>
 
-<%= button_to "Add a word", new_word_path, :method => "get", :class => 'btn btn-success pull-right' %>    
+<%= button_to "Add a word", new_word_path, :method => "get", :class => 'btn btn-primary' %>
 
 <table class="table">
-  <tr>
-    <td><b>Terms</b></td>
-    <td><b>Definitions</b></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+      <th></th>
+    </tr>
+  </thead>
   <% @words.each do |word| %>
     <tr>
       <% if word.definitions.count > 1 %>
@@ -14,9 +17,9 @@
       <% else %>
         <td><%= word.term %></td>
       <% end %>
-      <td><%= word.current_definition %></td>   
-      <td><%= link_to "Add a definition", new_definition_path(:word_id => word.id), :class => 'btn btn-success' %></td>
+      <td><%= word.current_definition.text unless word.current_definition.nil? %></td>
+
+      <td><%= link_to "Add a definition", new_word_definition_path(word), :class => 'btn btn-success' %></td>
     </tr>
   <% end %>
-
 </table>

@@ -11,14 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20130419181604) do
 
   create_table "definitions", :force => true do |t|
     t.text     "text"
     t.integer  "user_id"
     t.integer  "word_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "current",    :default => false
   end
 
   create_table "goals", :force => true do |t|
@@ -105,10 +107,21 @@ ActiveRecord::Schema.define(:version => 20130419181604) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
+  create_table "votes", :force => true do |t|
+    t.integer  "up_down"
+    t.integer  "definition_id"
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "words", :force => true do |t|
     t.text     "term"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "user_id"
+    t.boolean  "has_edits",  :default => false
   end
 
 end
