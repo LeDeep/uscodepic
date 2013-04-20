@@ -18,6 +18,12 @@ describe Definition do
     it {should have_many :votes}
   end
 
+  it 'casts a vote for a definition when it is created' do
+    user = FactoryGirl.create :user
+    definition = FactoryGirl.create :definition, :user => user
+    definition.votes.should_not be_empty
+  end
+
   #fixme - we should use this approach instead of Word#definitions_in_order. let's get better at sql :)
   # it 'orders by the most voted definition' do
   #   less_voted_definition = FactoryGirl.create(:definition)

@@ -18,6 +18,7 @@ describe User do
     it {should have_many :words}
     it {should have_many(:skills).through(:user_skills)}
     it {should have_many :user_skills}
+    it {should have_many :votes}
   end
 
   context 'callbacks' do
