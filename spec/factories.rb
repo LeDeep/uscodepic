@@ -24,6 +24,7 @@ FactoryGirl.define do
   factory :vote do
     up_down 1
     definition
+    user
   end
 
   factory :help_request do

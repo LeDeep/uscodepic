@@ -6,4 +6,12 @@ class Definition < ActiveRecord::Base
   belongs_to :word
   belongs_to :user
   has_many :votes
+
+  after_create :add_vote
+
+  private
+
+  def add_vote
+    user.votes.create(:definition => self, :up_down => 1)
+  end
 end

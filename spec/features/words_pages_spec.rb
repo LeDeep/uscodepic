@@ -37,18 +37,11 @@ feature 'show word' do
   end
 
   scenario 'upvoting a word' do
+    create_user_and_sign_in
     definition = FactoryGirl.create(:definition)
     visit word_path(definition.word)
     click_button "Vote Up"
     page.should have_content '1'
-  end
-
-  scenario 'definitions with no votes' do
-    word = FactoryGirl.create(:word)
-    current_definition = FactoryGirl.create(:definition, :word => word)
-    popular_definition = FactoryGirl.create(:definition, :word => word)
-    visit word_path(word)
-    page.should_not have_content "Current Definition"
   end
 
   scenario 'showing definitions in vote order' do

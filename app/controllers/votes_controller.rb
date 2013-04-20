@@ -5,7 +5,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Definition.find(params[:definition_id]).votes.create(params[:vote])
+    @vote = current_user.votes.create!(params[:vote].merge(:definition => Definition.find(params[:definition_id])))
 
     if @vote.save
       flash[:notice] = 'Thanks for voting.'

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :words
   has_many :skills, :through => :user_skills, :inverse_of => :users
   has_many :user_skills
+  has_many :votes
 
   after_create :make_profile
 
