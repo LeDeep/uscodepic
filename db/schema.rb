@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(:version => 20130419181604) do
     t.boolean  "closed"
   end
 
+  create_table "profiles", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "bio"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "responses", :force => true do |t|
     t.text     "message"
     t.integer  "help_request_id"

@@ -20,5 +20,7 @@ describe Tool do
   context 'associations' do 
     it {should belong_to :type}
     it {should belong_to :subject}
+    it {should have_many :goals}
+    it {should have_many(:users).through(:goals)}
   end
 end

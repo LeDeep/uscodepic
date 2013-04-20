@@ -4,6 +4,7 @@ Uscodepic::Application.routes.draw do
 
   resources :tools
   resources :subjects
+  resources :goals
   resources :types
   resource :profile, :only => [:show, :edit, :update]
   resources :words
@@ -13,6 +14,7 @@ Uscodepic::Application.routes.draw do
   end
   resources :skills, :only => [:new, :create, :index]
   resources :user_skills, :only => [:create, :destroy]
+  
 
   root :to => 'dashboard#index'
   

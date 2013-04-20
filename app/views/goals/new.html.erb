@@ -1,0 +1,32 @@
+<% provide :title, "Goal: #{@tool.name}" %>
+
+<table class='table'>
+  <thead class='tool'>
+    <tr>
+      <th><%= "Location" %></th>
+      <th><%= "Type" %></th>
+      <th><%= "Level" %></th>
+      <th><%= "Cost" %></th>
+      <th></th>
+    </tr>
+  </thead>
+      <td><%= link_to @tool.location, url_with_protocol(@tool.location) %></td>
+      <td><%= @tool.type.name %></td>
+      <td><%= @tool.level %></td>   
+      <td><%= @tool.cost %></td>
+   </tr>
+
+</table>
+
+<%= render :partial => 'layouts/errors', :locals => {:object => @goal} %>
+
+<%= form_for @goal do |f| %>
+  <%= f.label :status %>
+  <%= f.collection_select(:status, Goal::STATUS, :to_s, :to_s, :include_blank => true) %>
+
+  <%= f.hidden_field :tool_id %>
+  <br> <br>
+
+  <%= f.submit "Save", :class => 'btn btn-primary' %>
+
+  <% end %>

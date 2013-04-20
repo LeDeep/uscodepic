@@ -21,9 +21,9 @@
       <td><%= tool.name %></td>
       <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
       <td><%= tool.type.name %></td>
-      <td><%= tool.level %></td>   
+      <td><%= tool.level %></td>
       <td><%= tool.cost %></td>
-      <td><%= link_to 'Add to Study Hall', tools_path, :class => 'btn btn-mini' %></td>
+      <td><%= link_to 'Add to Study Hall', new_goal_path(:tool_id => tool.id), :class => 'btn btn-mini' %></td>
       <td><%= link_to 'Edit', edit_tool_path(tool.id), :class => 'btn btn-mini' %></td>
       
     </tr>
