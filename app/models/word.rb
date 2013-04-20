@@ -9,8 +9,6 @@ class Word < ActiveRecord::Base
   end
 
   def current_definition
-    unless definitions.map(&:votes).flatten.empty?
-      definitions.max_by {|definition| definition.votes.count}
-    end
+    definitions.max_by {|definition| definition.votes.count}
   end
 end
