@@ -25,3 +25,14 @@ def create_word_with_definition #fixme
   fill_in 'definition_text', :with => 'Test definition'
   click_button 'Submit'
 end
+
+def create_a_tool
+  visit new_tool_path
+  fill_in 'Name', :with => 'Fortran for Fun'
+  fill_in 'Location', :with => 'http://guides.rubyonrails.org/migrations.html'
+  select('Rails', :from => 'tool_subject_id')
+  select('Tutorial', :from => 'tool_type_id')
+  select('Beginner', :from => 'tool_level')
+  select('Free', :from => 'tool_cost')
+  click_on 'Save'
+end

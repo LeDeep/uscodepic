@@ -13,8 +13,10 @@ class User < ActiveRecord::Base
   has_many :definitions
   has_many :words
   has_many :skills, :through => :user_skills, :inverse_of => :users
+  has_many :tools, :through => :goals, :inverse_of => :users
   has_many :user_skills
   has_many :votes
+  has_many :goals
 
   after_create :make_profile
 

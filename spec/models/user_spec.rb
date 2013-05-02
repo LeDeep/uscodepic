@@ -19,6 +19,8 @@ describe User do
     it {should have_many(:skills).through(:user_skills)}
     it {should have_many :user_skills}
     it {should have_many :votes}
+    it {should have_many :goals}
+    it {should have_many(:tools).through(:goals)}
   end
 
   context 'callbacks' do
