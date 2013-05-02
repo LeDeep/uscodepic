@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419232942) do
+ActiveRecord::Schema.define(:version => 20130502194034) do
 
   create_table "definitions", :force => true do |t|
     t.text     "text"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20130419232942) do
   end
 
   create_table "subjects", :force => true do |t|
-    t.string "name"
+    t.string "category"
   end
 
   create_table "tools", :force => true do |t|
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20130419232942) do
   end
 
   create_table "types", :force => true do |t|
-    t.string "name"
+    t.string "format"
   end
 
   create_table "user_skills", :force => true do |t|

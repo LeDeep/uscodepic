@@ -1,4 +1,4 @@
-<% provide :title, "Subject: #{@subject.name}" %>
+<% provide :title, "Subject: #{@subject.category}" %>
 
 <table class='table'>
   <thead class='tool'>
@@ -17,7 +17,7 @@
     <tr>
       <td><%= tool.name %></td>
       <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
-      <td><%= tool.type.name %></td>
+      <td><%= tool.type.format %></td>
       <td><%= tool.level %></td>   
       <td><%= tool.cost %></td>
    </tr>

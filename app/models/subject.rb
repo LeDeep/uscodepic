@@ -1,8 +1,8 @@
 class Subject < ActiveRecord::Base
 
-  validates :name, :presence => true
+  validates :category, :presence => true
 
-  attr_accessible :name
+  attr_accessible :category
 
   has_many :tools
   

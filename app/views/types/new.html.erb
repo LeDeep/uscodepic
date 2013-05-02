@@ -3,8 +3,8 @@
 <%= render :partial => 'layouts/errors', :locals => {:object => @type} %>
 
 <%= form_for @type do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, :autofocus => true %>
+  <%= f.label :format %>
+  <%= f.text_field :format, :autofocus => true %>
 
   <%= f.submit "Add", :class => 'btn btn-primary' %>
 <% end %>

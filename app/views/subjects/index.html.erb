@@ -5,13 +5,13 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Category</th>
       <th>Delete</th>
     </tr>
   </thead>
   <% @subjects.each do |subject| %>
     <tr>
-      <td><%= link_to "#{subject.name}", subject_path(subject.id) %></td>
+      <td><%= link_to "#{subject.category}", subject_path(subject.id) %></td>
       <td><%= link_to 'Delete', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini' %></td>
     </tr>
   <% end %>

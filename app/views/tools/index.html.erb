@@ -3,21 +3,21 @@
 <table class='table'>
   <thead class='tool'>
     <tr>
-      <th><%= sortable "subject_id", "Subject" %></th>
+      <th><%= sortable "category", "Subject" %></th>
       <th><%= sortable "name", "Name" %></th>
-      <th><%= sortable "location", "Location" %></th>
-      <th><%= sortable "type_id", "Type" %></th>
-      <th><%= sortable "Level" %></th>
+      <th><%= "Location" %></th>
+      <th><%= sortable "format", "Type" %></th>
+      <th><%= sortable "level", "Level" %></th>
       <th><%= sortable "cost", "Cost" %></th>
       <th></th>
     </tr>
   </thead>
   <% @tools.each do |tool| %>
     <tr>
-      <td><%= link_to "#{tool.subject.name}", subject_path(tool.subject.id) %></td>
+      <td><%= link_to "#{tool.subject.category}", subject_path(tool.subject.id) %></td>
       <td><%= tool.name %></td>
       <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
-      <td><%= tool.type.name %></td>
+      <td><%= tool.type.format %></td>
       <td><%= tool.level %></td>   
       <td><%= tool.cost %></td>
 
