@@ -19,6 +19,7 @@ class Ability
       can [:read, :create], Tool
       can [:read, :create], Type
       can [:read, :create], Subject
+      can :manage, Goal, :user => user
     else
       can :read, HelpRequest
       can :read, Response

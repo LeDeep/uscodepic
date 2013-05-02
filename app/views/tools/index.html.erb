@@ -9,21 +9,23 @@
       <th><%= sortable "type_id", "Type" %></th>
       <th><%= sortable "Level" %></th>
       <th><%= sortable "cost", "Cost" %></th>
+      <th>Goals</th>
       <th></th>
+      
     </tr>
   </thead>
   <% @tools.each do |tool| %>
     <tr>
+
       <td><%= link_to "#{tool.subject.name}", subject_path(tool.subject.id) %></td>
       <td><%= tool.name %></td>
       <td><%= link_to tool.location, url_with_protocol(tool.location) %></td>
       <td><%= tool.type.name %></td>
-      <td><%= tool.level %></td>   
+      <td><%= tool.level %></td>
       <td><%= tool.cost %></td>
-
-
-
+      <td><%= link_to 'Add to Study Hall', new_goal_path(:tool_id => tool.id), :class => 'btn btn-mini' %></td>
       <td><%= link_to 'Edit', edit_tool_path(tool.id), :class => 'btn btn-mini' %></td>
+      
     </tr>
   <% end %>
 </table>

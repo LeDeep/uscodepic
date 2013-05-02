@@ -1,0 +1,28 @@
+
+<% provide :title, 'Goals' %>
+
+
+<table class='table'>
+  <thead class='tool'>
+    <tr>
+      <th><%= "Status" %></th>
+      <th><%= "Name" %></th>
+      <th><%= "Location" %></th>
+      <th><%= "Type" %></th>
+      <th><%= "Level" %></th>
+      <th></th>
+      
+    </tr>
+  </thead>
+
+  <% @goals.each do |goal|  %>
+
+    <tr>
+      <td><%= goal.status  %></td>
+      
+      
+    </tr>
+  <% end %>
+</table>
+
+
