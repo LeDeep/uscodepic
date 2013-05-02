@@ -11,9 +11,9 @@
       <th><%= sortable "cost", "Cost" %></th>
       <th>Goals</th>
       <th></th>
-      
     </tr>
   </thead>
+  
   <% @tools.each do |tool| %>
     <tr>
       <td><%= link_to "#{tool.subject.category}", subject_path(tool.subject.id) %></td>
