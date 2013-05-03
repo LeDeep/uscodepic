@@ -4,7 +4,7 @@ feature 'type' do
   scenario 'add type' do
     create_user_and_sign_in
     visit "/types/new"
-    fill_in 'Name', :with => 'Book'
+    fill_in 'Format', :with => 'Book'
     click_button "Add"
     page.should have_content 'created'
 
@@ -14,9 +14,9 @@ feature 'type' do
   scenario 'invalid input' do 
     create_user_and_sign_in
     visit "/types/new"
-    fill_in 'Name', :with => ''
+    fill_in 'Format', :with => ''
     click_button "Add"
-    page.should have_content "Name can't be blank"
+    page.should have_content "Format can't be blank"
   end
 
   scenario 'delete type' 

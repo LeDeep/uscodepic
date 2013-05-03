@@ -4,7 +4,7 @@ feature Subject do
   scenario 'add subject' do
     create_user_and_sign_in
     visit new_subject_path
-    fill_in 'Name', :with => 'HTML/CSS'
+    fill_in 'Category', :with => 'HTML/CSS'
     click_button "Add"
     page.should have_content 'created'
 
@@ -13,9 +13,9 @@ feature Subject do
   scenario 'invalid input' do 
     create_user_and_sign_in
     visit new_subject_path
-    fill_in 'Name', :with => ''
+    fill_in 'Category', :with => ''
     click_button "Add"
-    page.should have_content "Name can't be blank"
+    page.should have_content "Category can't be blank"
   end
 
   scenario 'show tools by subject' do

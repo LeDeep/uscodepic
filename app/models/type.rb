@@ -1,8 +1,8 @@
 class Type < ActiveRecord::Base
 
-  validates :name, :presence => true
+  validates :format, :presence => true
 
-  attr_accessible :name
+  attr_accessible :format
 
   has_many :tools
   

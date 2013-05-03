@@ -16,9 +16,9 @@ class Ability
       can :destroy, Definition, :user => user
       can :update, Definition
 
-      can [:read, :create], Tool
+      can :manage, Tool
       can [:read, :create], Type
-      can [:read, :create], Subject
+      can [:read, :create, :destroy], Subject #change to only read & create after making edits on Heroku
       can :manage, Goal, :user => user
     else
       can :read, HelpRequest

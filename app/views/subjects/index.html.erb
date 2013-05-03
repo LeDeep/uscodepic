@@ -1,17 +1,15 @@
 <% provide :title, 'Subjects' %>
 
-
-
 <table class='table'>
-  <thead>
+  <thead class='tool'>
     <tr>
-      <th>Name</th>
+      <th><%= sortable "category", "Category" %></th>
       <th>Delete</th>
     </tr>
   </thead>
   <% @subjects.each do |subject| %>
     <tr>
-      <td><%= link_to "#{subject.name}", subject_path(subject.id) %></td>
+      <td><%= link_to "#{subject.category}", subject_path(subject.id) %></td>
       <td><%= link_to 'Delete', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini' %></td>
     </tr>
   <% end %>

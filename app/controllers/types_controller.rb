@@ -1,5 +1,5 @@
 class TypesController < ApplicationController
-  
+  helper_method :sort_column, :sort_direction 
   load_and_authorize_resource 
 
   def create
@@ -15,10 +15,9 @@ class TypesController < ApplicationController
     end
   end
 
-  def show
-    @type = Type.find(params[:id])
-    @tools = Tool.all
-    
+  def index
+    @types = Type.all
+    @types = Type.order(sort_column + " " + sort_direction)
   end
 
   def update
@@ -31,10 +30,26 @@ class TypesController < ApplicationController
     end
   end
 
+  def show
+    @type = Type.find(params[:id])
+    @tools = Tool.all
+  end
+
   def destroy
     @type = Type.find(params[:id])
     @type.destroy
     flash[:notice] = "Your type was successfully deleted."
     redirect_to types_path
   end
+end
+
+private
+
+def sort_column
+  Type.column_names.include?(params[:sort]) ? params[:sort] : 'format'    
+end
+
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  
 end

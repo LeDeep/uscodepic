@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController  
-
+  helper_method :sort_column, :sort_direction
   load_and_authorize_resource 
 
   def create
@@ -16,7 +16,7 @@ class SubjectsController < ApplicationController
   end
 
   def index
-    @subjects = Subject.all
+    @subjects = Subject.order(sort_column + " " + sort_direction)
   end
 
   def update
@@ -41,4 +41,15 @@ class SubjectsController < ApplicationController
     redirect_to subjects_path
   end
 
+end
+
+private
+
+def sort_column
+  Subject.column_names.include?(params[:sort]) ? params[:sort] : 'category'    
+end
+
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  
 end

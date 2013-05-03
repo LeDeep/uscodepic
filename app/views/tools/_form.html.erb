@@ -9,12 +9,12 @@
   <%= f.text_field :location %>
 
   <%= f.label :subject %>
-  <%= f.collection_select(:subject_id, @subjects, :id, :name, :include_blank => true) if @subjects %>
+  <%= f.collection_select(:subject_id, @subjects, :id, :category, :include_blank => true) if @subjects %>
   <%= link_to "Add Subject", new_subject_path, :class => "btn btn-mini" %>
 
 
   <%= f.label :type %>
-  <%= f.collection_select(:type_id, @types, :id, :name, :include_blank => true) if @types %>
+  <%= f.collection_select(:type_id, @types, :id, :format, :include_blank => true) if @types %>
   <%= link_to "Add Type", new_type_path, :class => "btn btn-mini" %>
         
 

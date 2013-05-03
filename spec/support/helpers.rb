@@ -7,10 +7,10 @@ end
 
 def create_subject_and_type
     visit "/subjects/new"
-    fill_in 'Name', :with => 'Rails'
+    fill_in 'Category', :with => 'Rails'
     click_button "Add"
     visit new_type_path
-    fill_in 'Name', :with => 'Tutorial'
+    fill_in 'Format', :with => 'Tutorial'
     click_button "Add"
 end
 
