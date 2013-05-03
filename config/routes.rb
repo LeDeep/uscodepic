@@ -24,7 +24,6 @@ Uscodepic::Application.routes.draw do
   resources :skills, :only => [:new, :create, :index]
   resources :user_skills, :only => [:create, :destroy]
   
-
   root :to => 'dashboard#index'
   
   match 'dashboard' => 'dashboard#index', :via => :get

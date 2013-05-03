@@ -66,6 +66,17 @@
   </div>
 
   <div class="container">
+    <% if user_signed_in? %>
+      Welcome!
+    <% else %>
+      <div class="row" style="background-color:LightBlue; height:browserHeight">
+        <div class="span12">
+          <h2 class="header_line" style="color:black;"><span>Welcome to Uscodepic</h2>
+          <p style="color:black;">This site is designed to help people learn how to program.  Check out the tools tab for lots of awesome resources!</p>
+        </div>
+      </div>
+    <% end %>
+
 
     <%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
       
